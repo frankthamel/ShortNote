@@ -13,6 +13,8 @@
 		46F093621F14850B00E150C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F093611F14850B00E150C6 /* Assets.xcassets */; };
 		46F093651F14850B00E150C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F093631F14850B00E150C6 /* LaunchScreen.storyboard */; };
 		46F093701F14850B00E150C6 /* Short_NoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0936F1F14850B00E150C6 /* Short_NoteTests.swift */; };
+		46F179991F14E237003FAF79 /* FTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F179981F14E237003FAF79 /* FTButton.swift */; };
+		46F1799B1F14E384003FAF79 /* FTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1799A1F14E384003FAF79 /* FTView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		46F0936B1F14850B00E150C6 /* Short NoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Short NoteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F0936F1F14850B00E150C6 /* Short_NoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Short_NoteTests.swift; sourceTree = "<group>"; };
 		46F093711F14850B00E150C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46F179981F14E237003FAF79 /* FTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTButton.swift; sourceTree = "<group>"; };
+		46F1799A1F14E384003FAF79 /* FTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +81,15 @@
 		46F093591F14850B00E150C6 /* Short Note */ = {
 			isa = PBXGroup;
 			children = (
-				46F0935A1F14850B00E150C6 /* AppDelegate.swift */,
-				46F0935C1F14850B00E150C6 /* ViewController.swift */,
-				46F0935E1F14850B00E150C6 /* Main.storyboard */,
-				46F093611F14850B00E150C6 /* Assets.xcassets */,
-				46F093631F14850B00E150C6 /* LaunchScreen.storyboard */,
-				46F093661F14850B00E150C6 /* Info.plist */,
+				46F0937D1F148A5000E150C6 /* Storyboards */,
+				46F0937B1F148A2D00E150C6 /* Model */,
+				46F0937A1F148A1B00E150C6 /* View */,
+				46F0937C1F148A3600E150C6 /* Controller */,
+				46F0937E1F148A6E00E150C6 /* Common */,
+				46F093821F148AC800E150C6 /* Layout */,
+				46F093831F148AD400E150C6 /* Helpers */,
+				46F093801F148AA100E150C6 /* Protocols */,
+				46F093811F148AAD00E150C6 /* Extensions */,
 			);
 			path = "Short Note";
 			sourceTree = "<group>";
@@ -94,6 +101,85 @@
 				46F093711F14850B00E150C6 /* Info.plist */,
 			);
 			path = "Short NoteTests";
+			sourceTree = "<group>";
+		};
+		46F0937A1F148A1B00E150C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		46F0937B1F148A2D00E150C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		46F0937C1F148A3600E150C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46F0935C1F14850B00E150C6 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		46F0937D1F148A5000E150C6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				46F0935E1F14850B00E150C6 /* Main.storyboard */,
+				46F093631F14850B00E150C6 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		46F0937E1F148A6E00E150C6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				46F0935A1F14850B00E150C6 /* AppDelegate.swift */,
+				46F093661F14850B00E150C6 /* Info.plist */,
+				46F0937F1F148A7F00E150C6 /* Resources */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		46F0937F1F148A7F00E150C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				46F093611F14850B00E150C6 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		46F093801F148AA100E150C6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		46F093811F148AAD00E150C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		46F093821F148AC800E150C6 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				46F179981F14E237003FAF79 /* FTButton.swift */,
+				46F1799A1F14E384003FAF79 /* FTView.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		46F093831F148AD400E150C6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F1799B1F14E384003FAF79 /* FTView.swift in Sources */,
 				46F0935D1F14850B00E150C6 /* ViewController.swift in Sources */,
+				46F179991F14E237003FAF79 /* FTButton.swift in Sources */,
 				46F0935B1F14850B00E150C6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,7 +373,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -330,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -345,6 +433,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MV76X88Q4Q;
 				INFOPLIST_FILE = "Short Note/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "interview.crowderia.Short-Note";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -358,6 +447,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MV76X88Q4Q;
 				INFOPLIST_FILE = "Short Note/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "interview.crowderia.Short-Note";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,6 +504,7 @@
 				46F093761F14850B00E150C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46F093771F14850B00E150C6 /* Build configuration list for PBXNativeTarget "Short NoteTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +513,7 @@
 				46F093791F14850B00E150C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
