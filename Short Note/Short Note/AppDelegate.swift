@@ -13,9 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // defining core data stack
+    lazy var coreDataStack = CoreDataStack(modelName: "ShortNoteDataModel")
+    var signInViewController : LogInViewController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // set current core data stack to signIn view
+        guard let mainController = window?.rootViewController as? LogInViewController else {
+            return true
+        }
+        mainController.managedContext = coreDataStack.managedContext
+        signInViewController = mainController
         
         // set Short Note app standard colors to navigation bar
         UINavigationBar.appearance().tintColor = UIColor.white
@@ -46,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

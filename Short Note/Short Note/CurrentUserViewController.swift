@@ -1,29 +1,24 @@
 //
-//  LogInViewController.swift
+//  CurrentUserViewController.swift
 //  Short Note
 //
-//  Created by frank thamel on 7/11/17.
+//  Created by frank thamel on 7/12/17.
 //  Copyright © 2017 Crowderia. All rights reserved.
 //
 
 import UIKit
-import CryptoSwift
-import CoreData
 
-class LogInViewController: UIViewController {
+class CurrentUserViewController: UIViewController {
     
-    // managed object context
-    var managedContext : NSManagedObjectContext!
+    // connecting outlets
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var profilePicImageView: UIImageView!
     
-    // connecting form feilds
-    @IBOutlet weak var usernameText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let encryptedString = "Frank".md5()
-        print(encryptedString)
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,11 +26,14 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Sign in button action
-    @IBAction func signIn(_ sender: UIButton) {
+    // log out action
+    @IBAction func signOut(_ sender: UIButton) {
     }
     
-
+    @IBAction func editUser(_ sender: UIBarButtonItem) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 

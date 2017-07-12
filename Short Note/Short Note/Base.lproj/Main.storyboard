@@ -78,6 +78,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NlN-uk-uJX"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W7A-WQ-x2h">
                                 <rect key="frame" x="46" y="575" width="283" height="41"/>
@@ -133,17 +136,19 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="cCm-6t-xbe" kind="show" id="2wT-nt-EmO"/>
+                        <outlet property="passwordText" destination="MVU-lA-aa4" id="onS-dH-CNi"/>
+                        <outlet property="usernameText" destination="otX-Rl-leQ" id="mkQ-H5-cX2"/>
+                        <segue destination="cCm-6t-xbe" kind="show" identifier="successLoginSegue" id="2wT-nt-EmO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="881" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Create User View Controller-->
         <scene sceneID="mx5-Vb-Uaa">
             <objects>
-                <viewController id="12L-KQ-ccG" sceneMemberID="viewController">
+                <viewController id="12L-KQ-ccG" customClass="CreateUserViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q2A-s8-QlE"/>
                         <viewControllerLayoutGuide type="bottom" id="iRe-LV-Cc3"/>
@@ -229,6 +234,9 @@
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createNewUser:" destination="12L-KQ-ccG" eventType="touchUpInside" id="ile-4z-14x"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoY-fl-gjU">
                                         <rect key="frame" x="247" y="0.0" width="36" height="36"/>
@@ -238,6 +246,9 @@
                                             <constraint firstAttribute="height" constant="36" id="jH9-8s-GtP"/>
                                         </constraints>
                                         <state key="normal" image="cancelButton"/>
+                                        <connections>
+                                            <action selector="cancelUserCreation:" destination="12L-KQ-ccG" eventType="touchUpInside" id="G3p-hh-06a"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -293,7 +304,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="Qyb-wg-A5Q"/>
+                        <outlet property="confirmPasswordText" destination="CBa-tZ-5rx" id="B0I-G1-MuO"/>
+                        <outlet property="passwordText" destination="E1T-hA-gWJ" id="Afx-tD-YI5"/>
+                        <outlet property="usernameText" destination="Ggs-3E-qOe" id="0I1-Eg-mbr"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="SignUpToLogInSegue" id="Qyb-wg-A5Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9d-60-lPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -303,7 +317,7 @@
         <!--Short Note-->
         <scene sceneID="c71-b5-MJh">
             <objects>
-                <viewController id="kHQ-3I-hb0" sceneMemberID="viewController">
+                <viewController id="kHQ-3I-hb0" customClass="LanguagesViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y5U-er-0JK"/>
                         <viewControllerLayoutGuide type="bottom" id="76U-P5-UvV"/>
@@ -316,7 +330,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="aDf-0o-pNz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LanguageCell" rowHeight="80" id="aDf-0o-pNz" customClass="LanguagesTableViewCell" customModule="Short_Note" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDf-0o-pNz" id="nFa-Tj-sF3">
@@ -381,18 +395,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="m38-5F-ckc" kind="show" id="zPj-eG-3vC"/>
-                        <segue destination="IOh-EP-wvu" kind="show" id="9Vf-Tk-JYP"/>
+                        <outlet property="tableView" destination="LNw-oL-L9R" id="9JF-qJ-JqR"/>
+                        <segue destination="m38-5F-ckc" kind="show" identifier="newLanguageSegue" id="zPj-eG-3vC"/>
+                        <segue destination="IOh-EP-wvu" kind="show" identifier="goToNotesSegue" id="9Vf-Tk-JYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bf-mn-t4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3736.8000000000002" y="-618.44077961019491"/>
         </scene>
-        <!--View Controller-->
+        <!--Short Notes View Controller-->
         <scene sceneID="j8q-3f-fBs">
             <objects>
-                <viewController id="IOh-EP-wvu" sceneMemberID="viewController">
+                <viewController id="IOh-EP-wvu" customClass="ShortNotesViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8nc-2b-hVM"/>
                         <viewControllerLayoutGuide type="bottom" id="Q25-h4-bvr"/>
@@ -405,7 +420,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="psa-XM-vaQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShortNoteCell" rowHeight="80" id="psa-XM-vaQ" customClass="ShortNotesTableViewCell" customModule="Short_Note" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="psa-XM-vaQ" id="jJ2-Ze-vxA">
@@ -476,17 +491,19 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="Z11-As-Fd5" kind="show" id="beq-r4-F83"/>
+                        <outlet property="tableView" destination="EMl-Iq-YD2" id="6ny-bn-NlW"/>
+                        <segue destination="Z11-As-Fd5" kind="show" identifier="noteViewSegue" id="beq-r4-F83"/>
+                        <segue destination="VRH-Qe-c9h" kind="show" identifier="editNoteSegue" id="Exd-SX-9L6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQE-bB-T3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4524" y="-618.44077961019491"/>
         </scene>
-        <!--View Controller-->
+        <!--Short Note View Controller-->
         <scene sceneID="lBJ-X2-aRi">
             <objects>
-                <viewController id="Z11-As-Fd5" sceneMemberID="viewController">
+                <viewController id="Z11-As-Fd5" customClass="ShortNoteViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rsf-Zw-5Ea"/>
                         <viewControllerLayoutGuide type="bottom" id="Ygg-2L-5KX"/>
@@ -544,28 +561,43 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yvu-ct-Wru">
                                                 <rect key="frame" x="0.0" y="22" width="283" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onD-m9-tKG">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onD-m9-tKG">
                                                         <rect key="frame" x="0.0" y="0.0" width="56.5" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="dnu-fs-hfI"/>
                                                         </constraints>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="previewImage:" destination="Z11-As-Fd5" eventType="touchUpInside" id="XUZ-Ht-wM5"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iF9-RH-ZSJ">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iF9-RH-ZSJ">
                                                         <rect key="frame" x="56.5" y="0.0" width="56.5" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="previewImage:" destination="Z11-As-Fd5" eventType="touchUpInside" id="1nC-eH-Ii4"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3X-17-Jvi">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3X-17-Jvi">
                                                         <rect key="frame" x="113" y="0.0" width="57" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="previewImage:" destination="Z11-As-Fd5" eventType="touchUpInside" id="86j-uJ-dUu"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NB-0A-XTr">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NB-0A-XTr">
                                                         <rect key="frame" x="170" y="0.0" width="56.5" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="previewImage:" destination="Z11-As-Fd5" eventType="touchUpInside" id="xsW-nG-XCm"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1D-e7-JgA">
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1D-e7-JgA">
                                                         <rect key="frame" x="226.5" y="0.0" width="56.5" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="previewImage:" destination="Z11-As-Fd5" eventType="touchUpInside" id="AyH-Qz-5hU"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -605,6 +637,16 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="imageFiveButton" destination="w1D-e7-JgA" id="2ya-T6-Kg7"/>
+                        <outlet property="imageFourButton" destination="5NB-0A-XTr" id="PVQ-i3-FVG"/>
+                        <outlet property="imageOneButton" destination="onD-m9-tKG" id="Tum-ZU-jnZ"/>
+                        <outlet property="imageThreeButton" destination="T3X-17-Jvi" id="2Rj-T2-pTM"/>
+                        <outlet property="imageTwoButton" destination="iF9-RH-ZSJ" id="Cj8-7G-Fd1"/>
+                        <outlet property="languageLabel" destination="IPK-4J-JoM" id="2PE-r4-aaw"/>
+                        <outlet property="noteTextView" destination="OeB-wD-EOz" id="p27-Hh-V83"/>
+                        <outlet property="titleLabel" destination="lns-mu-XOT" id="ac6-s7-YW4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39w-ze-b1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -613,7 +655,7 @@
         <!--New Language-->
         <scene sceneID="zLb-hg-xt1">
             <objects>
-                <viewController title="New Language" hidesBottomBarWhenPushed="YES" id="m38-5F-ckc" sceneMemberID="viewController">
+                <viewController title="New Language" hidesBottomBarWhenPushed="YES" id="m38-5F-ckc" customClass="SaveLanguageViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GXD-sS-QHN"/>
                         <viewControllerLayoutGuide type="bottom" id="NJQ-F8-XpJ"/>
@@ -660,11 +702,17 @@
                                                 <real key="value" value="18"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveLanguage:" destination="m38-5F-ckc" eventType="touchUpInside" id="rxI-az-4kW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49E-dL-lJU">
                                         <rect key="frame" x="247" y="0.0" width="36" height="36"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="cancelButton"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="m38-5F-ckc" eventType="touchUpInside" id="J9B-6O-sk0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -679,6 +727,9 @@
                             <constraint firstAttribute="bottomMargin" secondItem="acX-XH-Mv6" secondAttribute="bottom" constant="20" id="y99-Ar-5CQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="languageText" destination="ZhR-jo-TPQ" id="M14-bd-ANx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhE-mJ-6td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -687,7 +738,7 @@
         <!--New Note-->
         <scene sceneID="DpP-yy-tp7">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="VRH-Qe-c9h" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="VRH-Qe-c9h" customClass="SaveNoteViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sZt-fN-cIL"/>
                         <viewControllerLayoutGuide type="bottom" id="9by-du-tDR"/>
@@ -747,29 +798,44 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="FJe-Wi-9T1">
                                                 <rect key="frame" x="0.0" y="22" width="283" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBH-Ah-WF5">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBH-Ah-WF5">
                                                         <rect key="frame" x="0.0" y="0.0" width="46" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="46" id="9me-k6-6ay"/>
                                                             <constraint firstAttribute="height" constant="40" id="fEn-8N-1vp"/>
                                                         </constraints>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="addImage:" destination="VRH-Qe-c9h" eventType="touchUpInside" id="Lah-Rh-1sX"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJe-Gf-83G">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJe-Gf-83G">
                                                         <rect key="frame" x="59.5" y="0.0" width="46" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="addImage:" destination="VRH-Qe-c9h" eventType="touchUpInside" id="RZ0-sB-yAL"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwx-Ny-4Yx">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwx-Ny-4Yx">
                                                         <rect key="frame" x="118.5" y="0.0" width="46" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="addImage:" destination="VRH-Qe-c9h" eventType="touchUpInside" id="Vye-4W-u6z"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Td-fR-AvM">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Td-fR-AvM">
                                                         <rect key="frame" x="178" y="0.0" width="46" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="addImage:" destination="VRH-Qe-c9h" eventType="touchUpInside" id="gc6-dH-5tg"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1s-p0-cC4">
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1s-p0-cC4">
                                                         <rect key="frame" x="237" y="0.0" width="46" height="40"/>
                                                         <state key="normal" image="addImageIcon_inactive"/>
+                                                        <connections>
+                                                            <action selector="addImage:" destination="VRH-Qe-c9h" eventType="touchUpInside" id="aIT-s7-7Sn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -819,11 +885,17 @@
                                                 <real key="value" value="18"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveNote:" destination="VRH-Qe-c9h" eventType="touchUpInside" id="Gxx-0K-qSc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0L-WY-K8r">
                                         <rect key="frame" x="247" y="0.0" width="36" height="36"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="cancelButton"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="VRH-Qe-c9h" eventType="touchUpInside" id="gjm-iE-Hr6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -839,6 +911,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Note" id="Unv-dp-8Di"/>
+                    <connections>
+                        <outlet property="noteImageViewFive" destination="n1s-p0-cC4" id="2d8-el-KV6"/>
+                        <outlet property="noteImageViewFour" destination="7Td-fR-AvM" id="iAw-Di-AOt"/>
+                        <outlet property="noteImageViewOne" destination="IBH-Ah-WF5" id="AXx-d5-TfI"/>
+                        <outlet property="noteImageViewThree" destination="Uwx-Ny-4Yx" id="PiI-68-qWx"/>
+                        <outlet property="noteImageViewTwo" destination="mJe-Gf-83G" id="6RK-ig-Ld1"/>
+                        <outlet property="noteText" destination="iay-Lj-FBb" id="0nU-Y0-OPH"/>
+                        <outlet property="noteTitleText" destination="5X1-qw-YvP" id="8y5-mx-32b"/>
+                        <outlet property="programmingLanguageText" destination="PqY-fc-Z4z" id="PpH-sj-52A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2C-d5-xwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -847,7 +929,7 @@
         <!--User-->
         <scene sceneID="jF6-01-bYg">
             <objects>
-                <viewController id="1rd-9o-WQd" sceneMemberID="viewController">
+                <viewController id="1rd-9o-WQd" customClass="CurrentUserViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lfy-3o-Ilt"/>
                         <viewControllerLayoutGuide type="bottom" id="L5n-re-TNS"/>
@@ -911,7 +993,7 @@
                                                 <color key="textColor" red="0.12743240589999999" green="0.58402079340000002" blue="0.95357722040000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*********" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TlJ-uB-6wm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="***************" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TlJ-uB-6wm">
                                                 <rect key="frame" x="0.0" y="22" width="283" height="23"/>
                                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
@@ -939,6 +1021,9 @@
                                         <real key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signOut:" destination="1rd-9o-WQd" eventType="touchUpInside" id="M3I-Jq-a9W"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -957,10 +1042,15 @@
                         <barButtonItem key="rightBarButtonItem" image="editIcon" id="0zK-Rj-HZQ">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
+                                <action selector="editUser:" destination="1rd-9o-WQd" id="khQ-I8-1ry"/>
                                 <segue destination="q0d-2i-iYd" kind="show" id="Wjh-8e-KEU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="profilePicImageView" destination="n2x-eu-3oX" id="GpA-mi-VOl"/>
+                        <outlet property="usernameLabel" destination="qEu-i2-e86" id="kng-RK-XZE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX7-Q1-328" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -969,7 +1059,7 @@
         <!--Edit User-->
         <scene sceneID="g5h-Sy-WQk">
             <objects>
-                <viewController title="Edit User" hidesBottomBarWhenPushed="YES" id="q0d-2i-iYd" sceneMemberID="viewController">
+                <viewController title="Edit User" hidesBottomBarWhenPushed="YES" id="q0d-2i-iYd" customClass="SaveUserViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dWn-in-1MA"/>
                         <viewControllerLayoutGuide type="bottom" id="2d1-6K-MhH"/>
@@ -983,6 +1073,10 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-7S-sVz">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="130"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="yxA-4o-Y5B" appends="YES" id="xMb-I9-hFO"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1080,11 +1174,17 @@
                                                 <real key="value" value="18"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveUser:" destination="q0d-2i-iYd" eventType="touchUpInside" id="PSI-KY-8S6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZX3-bT-Jnd">
                                         <rect key="frame" x="247" y="0.0" width="36" height="36"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="cancelButton"/>
+                                        <connections>
+                                            <action selector="cancelUserUpdate:" destination="q0d-2i-iYd" eventType="touchUpInside" id="6K7-UI-knb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1101,8 +1201,19 @@
                             <constraint firstItem="bQA-z7-kmi" firstAttribute="top" secondItem="dWn-in-1MA" secondAttribute="bottom" constant="50" id="yxl-0E-XUE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordText" destination="H4J-eZ-ExH" id="72J-9t-e3B"/>
+                        <outlet property="newPasswordText" destination="8DK-3F-BLi" id="KTk-1p-YkW"/>
+                        <outlet property="profilePicImageView" destination="mLT-7S-sVz" id="Os9-Lq-Se6"/>
+                        <outlet property="usernameLabel" destination="sjN-WT-BUH" id="8Ir-wk-U3b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fkh-8q-LE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yxA-4o-Y5B">
+                    <connections>
+                        <action selector="changeProfilePic:" destination="q0d-2i-iYd" id="uho-je-b92"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4628" y="902.69865067466276"/>
         </scene>
@@ -1202,4 +1313,7 @@
         <image name="newUserIcon" width="131" height="130"/>
         <image name="profileIcon" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Exd-SX-9L6"/>
+    </inferredMetricsTieBreakers>
 </document>

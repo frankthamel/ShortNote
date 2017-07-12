@@ -1,29 +1,26 @@
 //
-//  LogInViewController.swift
+//  SaveUserViewController.swift
 //  Short Note
 //
-//  Created by frank thamel on 7/11/17.
+//  Created by frank thamel on 7/12/17.
 //  Copyright © 2017 Crowderia. All rights reserved.
 //
 
 import UIKit
-import CryptoSwift
-import CoreData
 
-class LogInViewController: UIViewController {
+class SaveUserViewController: UIViewController {
     
-    // managed object context
-    var managedContext : NSManagedObjectContext!
+    // connecting outlets
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var newPasswordText: UITextField!
+    @IBOutlet weak var confirmPasswordText: UITextField!
+    @IBOutlet weak var profilePicImageView: UIImageView!
     
-    // connecting form feilds
-    @IBOutlet weak var usernameText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let encryptedString = "Frank".md5()
-        print(encryptedString)
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,11 +28,19 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Sign in button action
-    @IBAction func signIn(_ sender: UIButton) {
+    // change profile pic
+    @IBAction func changeProfilePic(_ sender: UITapGestureRecognizer) {
+    }
+
+    // save user action
+    @IBAction func saveUser(_ sender: UIButton) {
     }
     
-
+    // cancel user update action
+    @IBAction func cancelUserUpdate(_ sender: UIButton) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 

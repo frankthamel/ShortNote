@@ -1,29 +1,34 @@
 //
-//  LogInViewController.swift
+//  ShortNoteViewController.swift
 //  Short Note
 //
-//  Created by frank thamel on 7/11/17.
+//  Created by frank thamel on 7/12/17.
 //  Copyright © 2017 Crowderia. All rights reserved.
 //
 
 import UIKit
-import CryptoSwift
-import CoreData
 
-class LogInViewController: UIViewController {
+class ShortNoteViewController: UIViewController {
     
-    // managed object context
-    var managedContext : NSManagedObjectContext!
+    // connecting outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var languageLabel: UILabel!
     
-    // connecting form feilds
-    @IBOutlet weak var usernameText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
+    // connecting image buttons
+    @IBOutlet weak var imageOneButton: UIButton!
+    @IBOutlet weak var imageTwoButton: UIButton!
+    @IBOutlet weak var imageThreeButton: UIButton!
+    @IBOutlet weak var imageFourButton: UIButton!
+    @IBOutlet weak var imageFiveButton: UIButton!
     
+    // note text
+    @IBOutlet weak var noteTextView: UITextView!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let encryptedString = "Frank".md5()
-        print(encryptedString)
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,9 +36,9 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Sign in button action
-    @IBAction func signIn(_ sender: UIButton) {
+    @IBAction func previewImage(_ sender: UIButton) {
     }
+    
     
 
     /*
