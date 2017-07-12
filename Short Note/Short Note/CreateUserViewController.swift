@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateUserViewController: UIViewController {
+    
+    // managed object context
+    var managedContext : NSManagedObjectContext!
     
     // connecting form text feilds
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmPasswordText: UITextField!
     
-
+    private let signUpToLogInSegue : String = "SignUpToLogInSegue"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,23 +32,78 @@ class CreateUserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     // register new user action
     @IBAction func createNewUser(_ sender: UIButton) {
+        // 1
+        var result = FormValidator.isEmptyField(usernameText.text, withName: "username")
+        triggerValidationAlert(view: result.status, message: result.message)
+
+        // 2
+        if !result.status {
+            result = FormValidator.isEmptyField(passwordText.text, withName: "password")
+            triggerValidationAlert(view: result.status, message: result.message)
+        }
+
+        // 3
+        if !result.status {
+            result = FormValidator.isEmptyField(confirmPasswordText.text, withName: "confirm password")
+            triggerValidationAlert(view: result.status, message: result.message)
+        }
+
+        // 4
+        if !result.status {
+            result = FormValidator.passwordMismatch(password: passwordText.text!.md5(), confirmPassword: confirmPasswordText.text!.md5())
+            triggerValidationAlert(view: result.status, message: result.message)
+        }
+
+        // 5
+        if !result.status {
+            result = FormValidator.usernameTaken(username: usernameText.text!, managedContext: managedContext)
+            triggerValidationAlert(view: result.status, message: result.message)
+        }
+
+        if !result.status {
+            do {
+                let newUser = User(context: managedContext)
+                newUser.username = usernameText.text!
+                newUser.password = passwordText.text!.md5()
+                try managedContext.save()
+            } catch let error as NSError {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+            performSegue(withIdentifier: signUpToLogInSegue, sender: self)
+        }
+ 
     }
     
+    // add profile pic
+    @IBAction func addProfilePic(_ sender: UITapGestureRecognizer) {
+        // TODO : need to implement image picker function
+    }
+
     // navigate to login screen
     @IBAction func cancelUserCreation(_ sender: UIButton) {
+        performSegue(withIdentifier: signUpToLogInSegue, sender: self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        usernameText.endEditing(true)
+        passwordText.endEditing(true)
+        confirmPasswordText.endEditing(true)
     }
-    */
-
+    
+    // hide keyboard when press on return
+    @IBAction func textFieldReturn(_ sender: AnyObject) {
+        _ = sender.resignFirstResponder()
+    }
+  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == signUpToLogInSegue {
+            let destinationController = segue.destination as! LogInViewController
+            destinationController.managedContext = managedContext
+        }
+    }
 }

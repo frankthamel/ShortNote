@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 class SaveLanguageViewController: UIViewController {
+    
+    // managed object context
+    var managedContext : NSManagedObjectContext!
     
     // connecting outlets
     @IBOutlet weak var languageText: UITextField!
     
-
+    // language only for update
+    var language: ProgrammingLanguage?
+    
+    private let backToLanguageListSegue : String = "unwindToMenu"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let newLanguage = language {
+            languageText.text = newLanguage.name!
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -27,22 +36,41 @@ class SaveLanguageViewController: UIViewController {
     
     // save language
     @IBAction func saveLanguage(_ sender: UIButton) {
+        
+        // 1
+        let result = FormValidator.isEmptyField(languageText.text, withName: "language")
+        triggerValidationAlert(view: result.status, message: result.message)
+
+        if !result.status {
+            do {
+                if let newLanguage = language {
+                    newLanguage.name = languageText.text!
+                } else {
+                    let entity = ProgrammingLanguage(context: managedContext)
+                    entity.name = languageText.text!
+                }
+                try managedContext.save()
+                languageText.text = ""
+                
+                // navigate to language list page
+                performSegue(withIdentifier: backToLanguageListSegue, sender: self)
+                
+            } catch let error as NSError {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
     }
     
     // cancel
     @IBAction func cancel(_ sender: UIButton) {
+        performSegue(withIdentifier: backToLanguageListSegue, sender: self)
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == backToLanguageListSegue {
+            let destinationController = segue.destination as! LanguagesViewController
+            destinationController.managedContext = managedContext
+        }
     }
-    */
 
 }

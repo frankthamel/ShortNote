@@ -7,16 +7,29 @@
 //
 
 import UIKit
+import CoreData
 
 class LanguagesViewController: UIViewController {
     
+    // managed object context
+    var managedContext : NSManagedObjectContext!
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var languagesTableView: UITableView!
+    
+    fileprivate let cellIdentifier : String = "LanguageCell"
+    fileprivate var programmingLanguages : [ProgrammingLanguage] = []
+    fileprivate let addLanguageSegue : String = "newLanguageSegue"
+    fileprivate var selectedLanguage :  ProgrammingLanguage? = nil // need to set in row select
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loadLanguages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadLanguages()
+        languagesTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,15 +37,86 @@ class LanguagesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func addLanguages(_ sender: UIBarButtonItem) {
+        selectedLanguage = nil
+        performSegue(withIdentifier: addLanguageSegue, sender: self)
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == addLanguageSegue {
+            let destinationController = segue.destination as! SaveLanguageViewController
+            destinationController.managedContext = managedContext
+            destinationController.language = selectedLanguage
+        }
+    }
+    
+    @IBAction func unwindToMenu(segue : UIStoryboardSegue){}
 }
+
+extension LanguagesViewController : UITableViewDataSource , UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return programmingLanguages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LanguagesTableViewCell
+        let languageName : String = programmingLanguages[indexPath.row].name!.uppercased()
+        cell.languageNameFirstLetterLabel.text = String(languageName[languageName.startIndex])
+        cell.languageNameLabel.text = programmingLanguages[indexPath.row].name!
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // update action
+        let updateAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Update", handler: {(action , indexPath) -> Void in
+            self.selectedLanguage = self.programmingLanguages[indexPath.row]
+            self.performSegue(withIdentifier: self.addLanguageSegue, sender: self)
+        })
+        
+        // delete action
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler: {(action , indexPath) -> Void in
+            // delete the row
+            self.programmingLanguages.remove(at: indexPath.row)
+            self.languagesTableView.deleteRows(at: [indexPath], with: .fade)
+        })
+        
+        // set action background colors
+        updateAction.backgroundColor = StandardColors.BLUE
+        deleteAction.backgroundColor = StandardColors.RED
+        
+        return [deleteAction , updateAction]
+    }
+}
+
+// load languages from database
+extension LanguagesViewController {
+   fileprivate func loadLanguages() {
+        let fetch : NSFetchRequest<ProgrammingLanguage> = ProgrammingLanguage.fetchRequest()
+        
+        do {
+            let results = try managedContext.fetch(fetch)
+            if results.count > 0 {
+                programmingLanguages = results
+            }
+        } catch let error as NSError {
+            print("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    // delete data
+    
+}
+
+
+
+
+

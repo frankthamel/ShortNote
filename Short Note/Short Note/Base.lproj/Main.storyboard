@@ -39,6 +39,9 @@
                                                 <color key="textColor" red="0.12549019607843137" green="0.58431372549019611" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="d4D-sd-SsR"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -56,6 +59,9 @@
                                                 <color key="textColor" red="0.12549019607843137" green="0.58431372549019611" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="textFieldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="oxV-mG-KJs"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -98,7 +104,7 @@
                                             <color key="titleColor" red="0.21368235349655151" green="0.27403032779693604" blue="0.31164011359214783" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="12L-KQ-ccG" kind="show" id="aly-8h-odU"/>
+                                            <segue destination="12L-KQ-ccG" kind="show" identifier="createUserSegue" id="aly-8h-odU"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -175,6 +181,9 @@
                                                 <color key="textColor" red="0.12549019607843137" green="0.58431372549019611" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldReturn:" destination="12L-KQ-ccG" eventType="editingDidEndOnExit" id="hiv-OO-RAz"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -192,6 +201,9 @@
                                                 <color key="textColor" red="0.12549019607843137" green="0.58431372549019611" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="textFieldReturn:" destination="12L-KQ-ccG" eventType="editingDidEndOnExit" id="fLf-fI-wWR"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -209,6 +221,9 @@
                                                 <color key="textColor" red="0.12549019607843137" green="0.58431372549019611" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="textFieldReturn:" destination="12L-KQ-ccG" eventType="editingDidEndOnExit" id="mfX-nf-goa"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -266,8 +281,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y11-OF-8Wg" customClass="FTView" customModule="Short_Note" customModuleProvider="target">
                                 <rect key="frame" x="122" y="127" width="131" height="130"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-VI-dAl">
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-VI-dAl">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="130"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="uog-hi-8My" appends="YES" id="gNW-uy-vam"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -311,6 +330,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9d-60-lPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uog-hi-8My">
+                    <connections>
+                        <action selector="addProfilePic:" destination="12L-KQ-ccG" id="YsL-Fi-n6L"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1848.8" y="-618.44077961019491"/>
         </scene>
@@ -326,7 +350,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LNw-oL-L9R">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LNw-oL-L9R">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -338,11 +362,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWX-4X-u1h" customClass="FTView" customModule="Short_Note" customModuleProvider="target">
-                                                    <rect key="frame" x="18" y="9" width="60" height="60"/>
+                                                    <rect key="frame" x="18" y="14" width="50" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3S-DM-qZp">
-                                                            <rect key="frame" x="17" y="7" width="27" height="46"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
+                                                            <rect key="frame" x="15.5" y="8" width="20.5" height="34.5"/>
+                                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -350,35 +374,43 @@
                                                     <color key="backgroundColor" red="0.12743240594863892" green="0.58402079343795776" blue="0.95357722043991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="h3S-DM-qZp" firstAttribute="centerY" secondItem="BWX-4X-u1h" secondAttribute="centerY" id="ClS-9W-qx9"/>
-                                                        <constraint firstAttribute="width" constant="60" id="F0H-Ov-Cgr"/>
+                                                        <constraint firstAttribute="width" constant="50" id="F0H-Ov-Cgr"/>
                                                         <constraint firstItem="h3S-DM-qZp" firstAttribute="centerX" secondItem="BWX-4X-u1h" secondAttribute="centerX" id="iYO-tg-Lw5"/>
-                                                        <constraint firstAttribute="height" constant="60" id="v3Z-uF-ssM"/>
+                                                        <constraint firstAttribute="height" constant="50" id="v3Z-uF-ssM"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="30"/>
+                                                            <real key="value" value="25"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8S-C6-CIt">
-                                                    <rect key="frame" x="98" y="28" width="197" height="23"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                    <rect key="frame" x="98" y="28" width="199" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
                                                     <color key="textColor" red="0.12743240589999999" green="0.58402079340000002" blue="0.95357722040000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="s8S-C6-CIt" firstAttribute="leading" secondItem="BWX-4X-u1h" secondAttribute="trailing" constant="20" id="1B7-ab-Wah"/>
+                                                <constraint firstItem="s8S-C6-CIt" firstAttribute="leading" secondItem="BWX-4X-u1h" secondAttribute="trailing" constant="30" id="1B7-ab-Wah"/>
                                                 <constraint firstItem="s8S-C6-CIt" firstAttribute="centerY" secondItem="nFa-Tj-sF3" secondAttribute="centerY" id="Ejb-1A-K82"/>
                                                 <constraint firstItem="BWX-4X-u1h" firstAttribute="centerY" secondItem="nFa-Tj-sF3" secondAttribute="centerY" id="aST-mf-xoW"/>
                                                 <constraint firstItem="BWX-4X-u1h" firstAttribute="leading" secondItem="nFa-Tj-sF3" secondAttribute="leadingMargin" constant="10" id="doV-v2-mYM"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="languageNameFirstLetterLabel" destination="h3S-DM-qZp" id="FOT-RS-jha"/>
+                                            <outlet property="languageNameLabel" destination="s8S-C6-CIt" id="LI6-8X-TB5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="kHQ-3I-hb0" id="Omg-El-oYt"/>
+                                    <outlet property="delegate" destination="kHQ-3I-hb0" id="Yna-Yk-Cyp"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -392,10 +424,13 @@
                     <navigationItem key="navigationItem" title="Short Note" id="8l4-eK-a4p">
                         <barButtonItem key="rightBarButtonItem" image="addNewLanguageButton" id="YUS-iD-bvw">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addLanguages:" destination="kHQ-3I-hb0" id="D4t-2n-hyb"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="LNw-oL-L9R" id="9JF-qJ-JqR"/>
+                        <outlet property="languagesTableView" destination="LNw-oL-L9R" id="hrw-df-g7p"/>
                         <segue destination="m38-5F-ckc" kind="show" identifier="newLanguageSegue" id="zPj-eG-3vC"/>
                         <segue destination="IOh-EP-wvu" kind="show" identifier="goToNotesSegue" id="9Vf-Tk-JYP"/>
                     </connections>
@@ -729,11 +764,13 @@
                     </view>
                     <connections>
                         <outlet property="languageText" destination="ZhR-jo-TPQ" id="M14-bd-ANx"/>
+                        <segue destination="xTV-Wd-ls3" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="2Dt-eR-cgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhE-mJ-6td" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xTV-Wd-ls3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4524" y="-1283"/>
+            <point key="canvasLocation" x="4524" y="-1380"/>
         </scene>
         <!--New Note-->
         <scene sceneID="DpP-yy-tp7">
@@ -1071,7 +1108,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQA-z7-kmi" customClass="FTView" customModule="Short_Note" customModuleProvider="target">
                                 <rect key="frame" x="122" y="114" width="131" height="130"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-7S-sVz">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-7S-sVz">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="130"/>
                                         <gestureRecognizers/>
                                         <connections>
