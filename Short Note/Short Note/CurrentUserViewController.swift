@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class CurrentUserViewController: UIViewController {
+    
+    // managed object context
+    var managedContext : NSManagedObjectContext!
     
     // connecting outlets
     @IBOutlet weak var usernameLabel: UILabel!

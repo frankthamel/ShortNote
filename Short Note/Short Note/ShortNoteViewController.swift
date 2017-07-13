@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ShortNoteViewController: UIViewController {
+    
+    // managed object context
+    var managedContext : NSManagedObjectContext!
     
     // connecting outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,11 +28,13 @@ class ShortNoteViewController: UIViewController {
     // note text
     @IBOutlet weak var noteTextView: UITextView!
     
+    
+    // current note
+    var note : ShortNote?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,16 +45,13 @@ class ShortNoteViewController: UIViewController {
     @IBAction func previewImage(_ sender: UIButton) {
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func setData() {
+        if let currentNote = note {
+            titleLabel.text = currentNote.title!
+            languageLabel.text = currentNote.language!.name!
+            noteTextView.text = currentNote.note!
+            
+            // TODO : Set images for priview
+        }
     }
-    */
-
 }

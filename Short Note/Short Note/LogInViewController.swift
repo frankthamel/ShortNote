@@ -76,6 +76,14 @@ class LogInViewController: UIViewController {
             let nav = barViewControllers.viewControllers![0] as! UINavigationController
             let destinationViewController = nav.topViewController as! LanguagesViewController
             destinationViewController.managedContext = managedContext
+            
+            let nav1 = barViewControllers.viewControllers![1] as! UINavigationController
+            let destinationViewController1 = nav1.topViewController as! SaveNoteViewController
+            destinationViewController1.managedContext = managedContext
+            
+            let nav2 = barViewControllers.viewControllers![2] as! UINavigationController
+            let destinationViewController2 = nav2.topViewController as! CurrentUserViewController
+            destinationViewController2.managedContext = managedContext
         }
         
         if segue.identifier == createUserSegue {

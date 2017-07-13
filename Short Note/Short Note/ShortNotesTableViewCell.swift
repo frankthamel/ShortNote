@@ -9,7 +9,12 @@
 import UIKit
 
 class ShortNotesTableViewCell: UITableViewCell {
-
+    
+    // connecting outlets
+    @IBOutlet weak var noteNumberLabel: UILabel!
+    @IBOutlet weak var noteTitleLabel: UILabel!
+    @IBOutlet weak var noteCreatedDateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -19,6 +19,7 @@ class LanguagesViewController: UIViewController {
     fileprivate let cellIdentifier : String = "LanguageCell"
     fileprivate var programmingLanguages : [ProgrammingLanguage] = []
     fileprivate let addLanguageSegue : String = "newLanguageSegue"
+    fileprivate let goToNotesSegue : String = "goToNotesSegue"
     fileprivate var selectedLanguage :  ProgrammingLanguage? = nil // need to set in row select
 
     override func viewDidLoad() {
@@ -49,6 +50,12 @@ class LanguagesViewController: UIViewController {
             destinationController.managedContext = managedContext
             destinationController.language = selectedLanguage
         }
+        
+        if segue.identifier == goToNotesSegue {
+             let destinationController = segue.destination as! ShortNotesViewController
+            destinationController.managedContext = managedContext
+            destinationController.programmingLanguage = selectedLanguage!
+        }
     }
     
     @IBAction func unwindToMenu(segue : UIStoryboardSegue){}
@@ -72,7 +79,9 @@ extension LanguagesViewController : UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        selectedLanguage = programmingLanguages[indexPath.row]
+        performSegue(withIdentifier: goToNotesSegue, sender: self)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -85,8 +94,15 @@ extension LanguagesViewController : UITableViewDataSource , UITableViewDelegate 
         // delete action
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler: {(action , indexPath) -> Void in
             // delete the row
-            self.programmingLanguages.remove(at: indexPath.row)
-            self.languagesTableView.deleteRows(at: [indexPath], with: .fade)
+            self.triggerDeleteAlert {
+                
+                // call delete function
+                if self.delete(language: self.programmingLanguages[indexPath.row]) {
+                    print("deleting row.")
+                    self.programmingLanguages.remove(at: indexPath.row)
+                    self.languagesTableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
         })
         
         // set action background colors
@@ -113,7 +129,17 @@ extension LanguagesViewController {
     }
     
     // delete data
-    
+   fileprivate func delete(language : ProgrammingLanguage) -> Bool {
+        managedContext.delete(language)
+        
+        do {
+            try managedContext.save()
+            return true
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+            return false
+        }
+    }
 }
 
 

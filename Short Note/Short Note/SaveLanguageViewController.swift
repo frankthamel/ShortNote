@@ -66,6 +66,16 @@ class SaveLanguageViewController: UIViewController {
         performSegue(withIdentifier: backToLanguageListSegue, sender: self)
     }
     
+    // hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        languageText.endEditing(true)
+    }
+    
+    // hide keyboard when press on return
+    @IBAction func textFieldReturn(_ sender: AnyObject) {
+        _ = sender.resignFirstResponder()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == backToLanguageListSegue {
             let destinationController = segue.destination as! LanguagesViewController
