@@ -53,11 +53,11 @@ class LogInViewController: UIViewController {
             triggerValidationAlert(view: !authenticate.status, message: authenticate.message)
             
             if authenticate.status {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.currentUser = usernameText.text!
                 performSegue(withIdentifier: successLoginSegue, sender: self)
             }
         }
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

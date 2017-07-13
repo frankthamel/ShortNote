@@ -12,6 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var currentUser : String = ""
+    
 
     // defining core data stack
     lazy var coreDataStack = CoreDataStack(modelName: "ShortNoteDataModel")

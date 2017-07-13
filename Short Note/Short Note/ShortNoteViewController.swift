@@ -28,10 +28,12 @@ class ShortNoteViewController: UIViewController {
     // note text
     @IBOutlet weak var noteTextView: UITextView!
     
-    
     // current note
     var note : ShortNote?
 
+    // preview image segue
+    private let imagePreviewSegue : String = "imagePreviewSegue"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
@@ -43,6 +45,7 @@ class ShortNoteViewController: UIViewController {
     }
     
     @IBAction func previewImage(_ sender: UIButton) {
+        performSegue(withIdentifier: imagePreviewSegue, sender: sender.tag)
     }
     
     private func setData() {
@@ -51,7 +54,53 @@ class ShortNoteViewController: UIViewController {
             languageLabel.text = currentNote.language!.name!
             noteTextView.text = currentNote.note!
             
-            // TODO : Set images for priview
+            if let _ = currentNote.imageOne {
+                imageOneButton.setImage(UIImage(named: "addImageIcon_active"), for: .normal)
+            }
+            if let _ = currentNote.imageTwo {
+                imageTwoButton.setImage(UIImage(named: "addImageIcon_active"), for: .normal)
+            }
+            if let _ = currentNote.imageThree {
+                imageThreeButton.setImage(UIImage(named: "addImageIcon_active"), for: .normal)
+            }
+            if let _ = currentNote.imageFour{
+                imageFourButton.setImage(UIImage(named: "addImageIcon_active"), for: .normal)
+            }
+            if let _ = currentNote.imageFive{
+                imageFiveButton.setImage(UIImage(named: "addImageIcon_active"), for: .normal)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == imagePreviewSegue {
+            let destinationController = segue.destination as! ImagePreviewViewController
+        
+            let buttonIndex = sender as! Int
+            switch buttonIndex {
+            case 1:
+                if let image1 = note?.imageOne {
+                    destinationController.image = UIImage(data: image1 as Data)
+                }
+            case 2:
+                if let image2 = note?.imageTwo{
+                    destinationController.image = UIImage(data: image2 as Data)
+                }
+            case 3:
+                if let image3 = note?.imageThree{
+                    destinationController.image = UIImage(data: image3 as Data)
+                }
+            case 4:
+                if let image4 = note?.imageFour {
+                    destinationController.image = UIImage(data: image4 as Data)
+                }
+            case 5:
+                if let image5 = note?.imageFive {
+                    destinationController.image = UIImage(data: image5 as Data)
+                }
+            default:
+                break
+            }
         }
     }
 }

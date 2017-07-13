@@ -18,6 +18,9 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmPasswordText: UITextField!
+    @IBOutlet weak var profilePicImageView: UIImageView!
+    
+    fileprivate var isPhotoAdded : Bool = false
     
     private let signUpToLogInSegue : String = "SignUpToLogInSegue"
     
@@ -69,6 +72,13 @@ class CreateUserViewController: UIViewController {
                 let newUser = User(context: managedContext)
                 newUser.username = usernameText.text!
                 newUser.password = passwordText.text!.md5()
+                if isPhotoAdded {
+                    if let image = profilePicImageView.image {
+                        let photoData = UIImagePNGRepresentation(image)!
+                        newUser.profilePic = NSData(data: photoData)
+                    }
+                }
+                
                 try managedContext.save()
             } catch let error as NSError {
                 print("Unresolved error \(error), \(error.userInfo)")
@@ -80,7 +90,7 @@ class CreateUserViewController: UIViewController {
     
     // add profile pic
     @IBAction func addProfilePic(_ sender: UITapGestureRecognizer) {
-        // TODO : need to implement image picker function
+        triggerActionSheetForImagePicker(delegate: self)
     }
 
     // navigate to login screen
@@ -105,5 +115,19 @@ class CreateUserViewController: UIViewController {
             let destinationController = segue.destination as! LogInViewController
             destinationController.managedContext = managedContext
         }
+    }
+}
+
+
+extension CreateUserViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profilePicImageView.image = selectedImage
+            profilePicImageView.contentMode = .scaleAspectFill
+            profilePicImageView.clipsToBounds = true
+            isPhotoAdded = true
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
 }

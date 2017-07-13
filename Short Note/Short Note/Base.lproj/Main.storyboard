@@ -13,7 +13,7 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="BYZ-38-t0r" customClass="LogInViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -325,6 +325,7 @@
                     <connections>
                         <outlet property="confirmPasswordText" destination="CBa-tZ-5rx" id="B0I-G1-MuO"/>
                         <outlet property="passwordText" destination="E1T-hA-gWJ" id="Afx-tD-YI5"/>
+                        <outlet property="profilePicImageView" destination="yPK-VI-dAl" id="eHy-Dh-C79"/>
                         <outlet property="usernameText" destination="Ggs-3E-qOe" id="0I1-Eg-mbr"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="SignUpToLogInSegue" id="Qyb-wg-A5Q"/>
                     </connections>
@@ -691,11 +692,68 @@
                         <outlet property="languageLabel" destination="IPK-4J-JoM" id="2PE-r4-aaw"/>
                         <outlet property="noteTextView" destination="OeB-wD-EOz" id="p27-Hh-V83"/>
                         <outlet property="titleLabel" destination="lns-mu-XOT" id="ac6-s7-YW4"/>
+                        <segue destination="JY4-6q-wKn" kind="show" identifier="imagePreviewSegue" id="M0E-ee-FLw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39w-ze-b1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5340" y="-618.44077961019491"/>
+        </scene>
+        <!--Image Preview View Controller-->
+        <scene sceneID="hWL-Ra-ilb">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="JY4-6q-wKn" customClass="ImagePreviewViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UkY-kL-2CZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="14b-u8-yEN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="cko-dE-m77">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K72-7g-gj2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QU0-Od-RaI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="P5m-cU-e2l">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pzp-gM-QoE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Pzp-gM-QoE" firstAttribute="leading" secondItem="P5m-cU-e2l" secondAttribute="leading" id="75I-dC-tJN"/>
+                                        <constraint firstAttribute="bottom" secondItem="Pzp-gM-QoE" secondAttribute="bottom" id="Nrb-Qg-mnV"/>
+                                        <constraint firstAttribute="trailing" secondItem="Pzp-gM-QoE" secondAttribute="trailing" id="PdZ-9q-PVj"/>
+                                        <constraint firstItem="Pzp-gM-QoE" firstAttribute="top" secondItem="P5m-cU-e2l" secondAttribute="top" id="kwh-DG-kfe"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K72-7g-gj2" firstAttribute="leading" secondItem="cko-dE-m77" secondAttribute="leading" id="4ne-zs-AE8"/>
+                            <constraint firstItem="14b-u8-yEN" firstAttribute="top" secondItem="K72-7g-gj2" secondAttribute="bottom" id="74w-85-yuq"/>
+                            <constraint firstItem="14b-u8-yEN" firstAttribute="top" secondItem="QU0-Od-RaI" secondAttribute="bottom" id="Bd7-zd-aqq"/>
+                            <constraint firstItem="QU0-Od-RaI" firstAttribute="top" secondItem="cko-dE-m77" secondAttribute="top" id="NvM-vg-Buh"/>
+                            <constraint firstAttribute="trailing" secondItem="QU0-Od-RaI" secondAttribute="trailing" id="gw2-sT-8fI"/>
+                            <constraint firstItem="K72-7g-gj2" firstAttribute="top" secondItem="cko-dE-m77" secondAttribute="top" id="hBG-TQ-IXV"/>
+                            <constraint firstAttribute="trailing" secondItem="K72-7g-gj2" secondAttribute="trailing" id="uKQ-RX-zxj"/>
+                            <constraint firstItem="QU0-Od-RaI" firstAttribute="leading" secondItem="cko-dE-m77" secondAttribute="leading" id="yMi-O7-bNJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="K72-7g-gj2" id="Tev-PJ-Xvy"/>
+                        <outlet property="previewImageView" destination="Pzp-gM-QoE" id="mbA-94-bNu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ivh-vu-dof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6216.8000000000002" y="-618.44077961019491"/>
         </scene>
         <!--New Language-->
         <scene sceneID="zLb-hg-xt1">
@@ -994,7 +1052,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npw-Sm-cto" customClass="FTView" customModule="Short_Note" customModuleProvider="target">
                                 <rect key="frame" x="122" y="114" width="130" height="130"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="n2x-eu-3oX">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="n2x-eu-3oX">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     </imageView>
                                 </subviews>
@@ -1012,7 +1070,7 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="65"/>
+                                        <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -1078,11 +1136,19 @@
                                     <action selector="signOut:" destination="1rd-9o-WQd" eventType="touchUpInside" id="M3I-Jq-a9W"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed and developed by Frank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-aQ-3uf">
+                                <rect key="frame" x="119" y="587" width="137.5" height="10.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
+                                <color key="textColor" red="0.21368235350000001" green="0.27403032779999997" blue="0.31164011359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="npw-Sm-cto" firstAttribute="centerX" secondItem="REd-SW-vrh" secondAttribute="centerX" id="6h8-iQ-v7D"/>
                             <constraint firstItem="TRI-ro-i1S" firstAttribute="centerY" secondItem="REd-SW-vrh" secondAttribute="centerY" id="Afb-m6-XAu"/>
+                            <constraint firstItem="L5n-re-TNS" firstAttribute="top" secondItem="fVB-aQ-3uf" secondAttribute="bottom" constant="20" id="K24-7I-Tqc"/>
+                            <constraint firstItem="fVB-aQ-3uf" firstAttribute="centerX" secondItem="REd-SW-vrh" secondAttribute="centerX" id="SSC-Qx-HlM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cxi-DT-kir" secondAttribute="trailing" constant="30" id="W7y-TD-RSO"/>
                             <constraint firstItem="L5n-re-TNS" firstAttribute="top" secondItem="cxi-DT-kir" secondAttribute="bottom" constant="50" id="giE-Xa-QqK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TRI-ro-i1S" secondAttribute="trailing" constant="30" id="ocX-BS-B01"/>
@@ -1096,7 +1162,7 @@
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="editUser:" destination="1rd-9o-WQd" id="khQ-I8-1ry"/>
-                                <segue destination="q0d-2i-iYd" kind="show" id="Wjh-8e-KEU"/>
+                                <segue destination="q0d-2i-iYd" kind="show" identifier="editUserSegue" id="Wjh-8e-KEU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1106,6 +1172,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX7-Q1-328" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed and developed by Frank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cu7-EQ-8p9">
+                    <rect key="frame" x="0.0" y="0.0" width="137.5" height="10.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
+                    <color key="textColor" red="0.21368235350000001" green="0.27403032779999997" blue="0.31164011359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </objects>
             <point key="canvasLocation" x="3736.8000000000002" y="902.69865067466276"/>
         </scene>
@@ -1124,7 +1197,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQA-z7-kmi" customClass="FTView" customModule="Short_Note" customModuleProvider="target">
                                 <rect key="frame" x="122" y="114" width="131" height="130"/>
                                 <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-7S-sVz">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-7S-sVz">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="130"/>
                                         <gestureRecognizers/>
                                         <connections>
@@ -1184,7 +1257,10 @@
                                                 <rect key="frame" x="0.0" y="22" width="283" height="30"/>
                                                 <color key="textColor" red="0.12743240594863892" green="0.58402079343795776" blue="0.95357722043991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="textFieldReturn:" destination="q0d-2i-iYd" eventType="editingDidEndOnExit" id="pCI-Jb-GcV"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1201,7 +1277,10 @@
                                                 <rect key="frame" x="0.0" y="22" width="283" height="30"/>
                                                 <color key="textColor" red="0.12743240594863892" green="0.58402079343795776" blue="0.95357722043991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="textFieldReturn:" destination="q0d-2i-iYd" eventType="editingDidEndOnExit" id="M6G-t1-LR5"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>

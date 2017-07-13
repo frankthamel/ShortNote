@@ -18,11 +18,20 @@ class CurrentUserViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var profilePicImageView: UIImageView!
     
+    // edit user segue
+    private let editUserSegue : String = "editUserSegue"
+    
+    // app delegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        usernameLabel.text = appDelegate.currentUser
+        
+        let currentUser = CurrentUser.find(username: appDelegate.currentUser, managedContext: managedContext)
+        if let pic = currentUser?.profilePic {
+            profilePicImageView.image = UIImage(data: pic as Data)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,20 +41,20 @@ class CurrentUserViewController: UIViewController {
     
     // log out action
     @IBAction func signOut(_ sender: UIButton) {
+        usernameLabel.text = ""
+        let viewController : LogInViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController") as! LogInViewController
+        viewController.managedContext = managedContext
+        self.present(viewController, animated: false, completion: nil)
     }
     
     @IBAction func editUser(_ sender: UIBarButtonItem) {
+        
     }
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == editUserSegue {
+            let destinationController = segue.destination as! SaveUserViewController
+            destinationController.managedContext = managedContext
+        }
     }
-    */
-
 }

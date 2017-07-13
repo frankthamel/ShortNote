@@ -6,12 +6,12 @@
 //  Copyright © 2017 Crowderia. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class UserAuthentication {
     class func authenticate(user : String , encryptedPassword : String, managedContext : NSManagedObjectContext ) -> (status : Bool , message : String) {
-        let fetch : NSFetchRequest<User> = User.fetchRequest()
+        let fetch: NSFetchRequest<User> = User.fetchRequest()
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(User.username), user)
         
         do {
@@ -36,4 +36,5 @@ class UserAuthentication {
 
         return (false , "")
     }
+    
 }
