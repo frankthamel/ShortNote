@@ -12,7 +12,7 @@ import CoreData
 class LanguagesViewController: UIViewController {
     
     // managed object context
-    var managedContext : NSManagedObjectContext!
+    internal var managedContext : NSManagedObjectContext!
     
     @IBOutlet weak var languagesTableView: UITableView!
     

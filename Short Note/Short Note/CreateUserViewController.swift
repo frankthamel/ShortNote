@@ -12,7 +12,7 @@ import CoreData
 class CreateUserViewController: UIViewController {
     
     // managed object context
-    var managedContext : NSManagedObjectContext!
+    internal var managedContext : NSManagedObjectContext!
     
     // connecting form text feilds
     @IBOutlet weak var usernameText: UITextField!

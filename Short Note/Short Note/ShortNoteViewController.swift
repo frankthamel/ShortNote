@@ -12,7 +12,7 @@ import CoreData
 class ShortNoteViewController: UIViewController {
     
     // managed object context
-    var managedContext : NSManagedObjectContext!
+    internal var managedContext : NSManagedObjectContext!
     
     // connecting outlets
     @IBOutlet weak var titleLabel: UILabel!

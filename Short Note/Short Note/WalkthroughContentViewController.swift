@@ -17,9 +17,9 @@ class WalkthroughContentViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var forwardButton: UIButton!
     
-    var index = 0
-    var imageFile = ""
-    var content = ""
+    internal var index = 0
+    internal var imageFile = ""
+    internal var content = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,20 @@ class WalkthroughContentViewController: UIViewController {
             break
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        imageView.alpha = 0
+        appNameImageView.alpha = 0
+        contentLabel.alpha = 0
+        pageControl.alpha = 0
+        forwardButton.alpha = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animateContent() // start animation
+    }
 
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         switch index {
@@ -50,5 +64,30 @@ class WalkthroughContentViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    
+    private func animateContent() {
+        
+        // animate image view
+        UIView.animate(withDuration: 0.5, animations: {
+            self.imageView.alpha = 1
+        })
+        
+        // animate app name image
+        UIView.animate(withDuration: 0.7, animations: {
+            self.appNameImageView.alpha = 1
+        })
+        
+        // animate content label
+        UIView.animate(withDuration: 0.9, animations: {
+            self.contentLabel.alpha = 1
+            self.pageControl.alpha = 1
+        })
+        
+        // animate nextButton
+        UIView.animate(withDuration: 1.1, animations: {
+            self.forwardButton.alpha = 1
+        })
     }
 }

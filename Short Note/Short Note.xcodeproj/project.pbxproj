@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		462D49BE1F1859CD00E2112A /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D49BD1F1859CD00E2112A /* WalkthroughPageViewController.swift */; };
 		462D49C01F185A1B00E2112A /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D49BF1F185A1B00E2112A /* WalkthroughContentViewController.swift */; };
+		462D49C21F18820800E2112A /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D49C11F18820800E2112A /* FormValidatorTests.swift */; };
 		463FBF8F1F1776FC006A214D /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463FBF8E1F1776FC006A214D /* CurrentUser.swift */; };
 		463FBF921F17F3A8006A214D /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463FBF911F17F3A8006A214D /* ImagePreviewViewController.swift */; };
+		464D9C021F18B7A400E8D9C3 /* ItunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 464D9C001F18B7A400E8D9C3 /* ItunesArtwork.png */; };
+		464D9C031F18B7A400E8D9C3 /* ItunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 464D9C011F18B7A400E8D9C3 /* ItunesArtwork@2x.png */; };
+		464D9C051F18B86B00E8D9C3 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D9C041F18B86B00E8D9C3 /* TestCoreDataStack.swift */; };
+		464D9C071F18BFA600E8D9C3 /* UserAuthenticationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D9C061F18BFA600E8D9C3 /* UserAuthenticationTest.swift */; };
 		46972A311F15B23100BDAEDF /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A301F15B23100BDAEDF /* CreateUserViewController.swift */; };
 		46972A331F15B31500BDAEDF /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A321F15B31500BDAEDF /* LanguagesViewController.swift */; };
 		46972A351F15B35600BDAEDF /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A341F15B35600BDAEDF /* LanguagesTableViewCell.swift */; };
@@ -32,10 +37,7 @@
 		46972A571F15EC5300BDAEDF /* SampleDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A561F15EC5300BDAEDF /* SampleDataCreator.swift */; };
 		46972A5B1F15F44900BDAEDF /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A5A1F15F44900BDAEDF /* FormValidator.swift */; };
 		46972A5E1F15F6D400BDAEDF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A5D1F15F6D400BDAEDF /* UIViewController+Extension.swift */; };
-		46972A5F1F15F6D400BDAEDF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A5D1F15F6D400BDAEDF /* UIViewController+Extension.swift */; };
 		46972A611F160D7C00BDAEDF /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A601F160D7C00BDAEDF /* UserAuthentication.swift */; };
-		46972A621F160D7C00BDAEDF /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A601F160D7C00BDAEDF /* UserAuthentication.swift */; };
-		46972A631F160DF300BDAEDF /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46972A5A1F15F44900BDAEDF /* FormValidator.swift */; };
 		46F0935B1F14850B00E150C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0935A1F14850B00E150C6 /* AppDelegate.swift */; };
 		46F093601F14850B00E150C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F0935E1F14850B00E150C6 /* Main.storyboard */; };
 		46F093621F14850B00E150C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F093611F14850B00E150C6 /* Assets.xcassets */; };
@@ -64,9 +66,14 @@
 		1FE811CD89E0DAE48423B8D3 /* Pods-Short Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Short Note.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Short Note/Pods-Short Note.debug.xcconfig"; sourceTree = "<group>"; };
 		462D49BD1F1859CD00E2112A /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		462D49BF1F185A1B00E2112A /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		462D49C11F18820800E2112A /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
 		463FBF8E1F1776FC006A214D /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		463FBF901F17F08A006A214D /* Short Note.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Short Note.entitlements"; sourceTree = "<group>"; };
 		463FBF911F17F3A8006A214D /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		464D9C001F18B7A400E8D9C3 /* ItunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItunesArtwork.png; sourceTree = "<group>"; };
+		464D9C011F18B7A400E8D9C3 /* ItunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ItunesArtwork@2x.png"; sourceTree = "<group>"; };
+		464D9C041F18B86B00E8D9C3 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		464D9C061F18BFA600E8D9C3 /* UserAuthenticationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationTest.swift; sourceTree = "<group>"; };
 		46972A301F15B23100BDAEDF /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		46972A321F15B31500BDAEDF /* LanguagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
 		46972A341F15B35600BDAEDF /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +148,8 @@
 			children = (
 				46F093591F14850B00E150C6 /* Short Note */,
 				46972A471F15DB2000BDAEDF /* ShortNoteDataModel.xcdatamodeld */,
+				464D9C001F18B7A400E8D9C3 /* ItunesArtwork.png */,
+				464D9C011F18B7A400E8D9C3 /* ItunesArtwork@2x.png */,
 				46F0936E1F14850B00E150C6 /* Short NoteTests */,
 				46F093581F14850B00E150C6 /* Products */,
 				6341D0F4BA5BCFB4657FCC11 /* Pods */,
@@ -179,7 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				46F0936F1F14850B00E150C6 /* Short_NoteTests.swift */,
+				462D49C11F18820800E2112A /* FormValidatorTests.swift */,
 				46F093711F14850B00E150C6 /* Info.plist */,
+				464D9C041F18B86B00E8D9C3 /* TestCoreDataStack.swift */,
+				464D9C061F18BFA600E8D9C3 /* UserAuthenticationTest.swift */,
 			);
 			path = "Short NoteTests";
 			sourceTree = "<group>";
@@ -406,7 +418,9 @@
 			files = (
 				46F093651F14850B00E150C6 /* LaunchScreen.storyboard in Resources */,
 				46F093621F14850B00E150C6 /* Assets.xcassets in Resources */,
+				464D9C021F18B7A400E8D9C3 /* ItunesArtwork.png in Resources */,
 				46F093601F14850B00E150C6 /* Main.storyboard in Resources */,
+				464D9C031F18B7A400E8D9C3 /* ItunesArtwork@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,10 +569,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46972A631F160DF300BDAEDF /* FormValidator.swift in Sources */,
-				46972A5F1F15F6D400BDAEDF /* UIViewController+Extension.swift in Sources */,
-				46972A621F160D7C00BDAEDF /* UserAuthentication.swift in Sources */,
+				462D49C21F18820800E2112A /* FormValidatorTests.swift in Sources */,
 				46F093701F14850B00E150C6 /* Short_NoteTests.swift in Sources */,
+				464D9C071F18BFA600E8D9C3 /* UserAuthenticationTest.swift in Sources */,
+				464D9C051F18B86B00E8D9C3 /* TestCoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

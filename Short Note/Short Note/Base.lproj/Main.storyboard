@@ -723,15 +723,15 @@
             </objects>
             <point key="canvasLocation" x="5340" y="-618.44077961019491"/>
         </scene>
-        <!--Image Preview View Controller-->
+        <!--Preview-->
         <scene sceneID="hWL-Ra-ilb">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="JY4-6q-wKn" customClass="ImagePreviewViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Preview" hidesBottomBarWhenPushed="YES" id="JY4-6q-wKn" customClass="ImagePreviewViewController" customModule="Short_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UkY-kL-2CZ"/>
                         <viewControllerLayoutGuide type="bottom" id="14b-u8-yEN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cko-dE-m77">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="cko-dE-m77">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1459,7 +1459,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tHW-HH-5Dw">
-                                <rect key="frame" x="56" y="145" width="263" height="227"/>
+                                <rect key="frame" x="56" y="145" width="263" height="224.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="W6M-qs-ExH">
                                         <rect key="frame" x="0.0" y="0.0" width="263" height="187"/>
@@ -1481,10 +1481,16 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="623-hy-Y6f">
-                                        <rect key="frame" x="0.0" y="207" width="263" height="20"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="207" width="263" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                                         <color key="textColor" red="0.12743240594863892" green="0.58402079343795776" blue="0.95357722043991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=compact-widthClass=compact">
+                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                             </stackView>

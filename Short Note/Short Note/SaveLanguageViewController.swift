@@ -12,7 +12,7 @@ import CoreData
 class SaveLanguageViewController: UIViewController {
     
     // managed object context
-    var managedContext : NSManagedObjectContext!
+    internal var managedContext : NSManagedObjectContext!
     
     // connecting outlets
     @IBOutlet weak var languageText: UITextField!

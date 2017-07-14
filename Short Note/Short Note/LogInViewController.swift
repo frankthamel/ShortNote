@@ -13,7 +13,7 @@ import CoreData
 class LogInViewController: UIViewController {
     
     // managed object context
-    var managedContext : NSManagedObjectContext!
+    internal var managedContext : NSManagedObjectContext!
     
     // connecting form feilds
     @IBOutlet weak var usernameText: UITextField!

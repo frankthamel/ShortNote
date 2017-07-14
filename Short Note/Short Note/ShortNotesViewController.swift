@@ -12,7 +12,7 @@ import CoreData
 class ShortNotesViewController: UIViewController {
     
     // managed object context
-    var managedContext : NSManagedObjectContext!
+    internal var managedContext : NSManagedObjectContext!
     
     @IBOutlet weak var tableView: UITableView!
     

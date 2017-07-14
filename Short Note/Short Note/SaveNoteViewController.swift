@@ -12,7 +12,7 @@ import CoreData
 class SaveNoteViewController: UIViewController {
     
     // managed object context
-    var managedContext : NSManagedObjectContext!
+    internal var managedContext : NSManagedObjectContext!
     
     // connecting outlets
     @IBOutlet weak var noteTitleText: UITextField!
