@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 
 extension UIViewController {
     // trigger alert messages
@@ -25,7 +25,7 @@ extension UIViewController {
     // handler for ok action can be passed as a traling closure
     func triggerDeleteAlert(deleteActionHandler : @escaping () -> Void) {
         
-        let alertMessage = UIAlertController(title: nil, message: "Are you sure want to delete the item?", preferredStyle: .alert)
+        let alertMessage = UIAlertController(title: nil, message: "Are you sure want to delete this item?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) {_ in
             deleteActionHandler()
         }
@@ -67,6 +67,18 @@ extension UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         optionMenu.addAction(cancelAction)
         present(optionMenu, animated: true, completion: nil)
+    }
+    
+    // validate user and navigate to login
+    func validateUser(managedContext : NSManagedObjectContext) {
+        // app delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if appDelegate.currentUser.isEmpty {
+            let viewController : LogInViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController") as! LogInViewController
+            viewController.managedContext = managedContext
+            self.present(viewController, animated: false, completion: nil)
+        }
     }
 
 }

@@ -24,6 +24,10 @@ class LanguagesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check current user
+        validateUser(managedContext: managedContext)
+        
         loadLanguages()
     }
     

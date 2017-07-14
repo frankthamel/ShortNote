@@ -24,6 +24,10 @@ class SaveLanguageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check current user
+        validateUser(managedContext: managedContext)
+        
         if let newLanguage = language {
             languageText.text = newLanguage.name!
         }

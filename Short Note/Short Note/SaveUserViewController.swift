@@ -28,6 +28,10 @@ class SaveUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check current user
+        validateUser(managedContext: managedContext)
+        
         currentUser = CurrentUser.find(username: appDelegate.currentUser, managedContext: managedContext)
         usernameLabel.text = appDelegate.currentUser
         if let pic = currentUser?.profilePic {

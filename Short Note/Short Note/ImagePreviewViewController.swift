@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ImagePreviewViewController: UIViewController {
+    
+    // managed object context
+    var managedContext : NSManagedObjectContext!
     
     // connecting outlets
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -19,6 +23,9 @@ class ImagePreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check current user
+        validateUser(managedContext: managedContext)
         
         // set preview image
         backgroundImageView.image = image

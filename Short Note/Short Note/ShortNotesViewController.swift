@@ -39,6 +39,10 @@ class ShortNotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check current user
+        validateUser(managedContext: managedContext)
+        
         self.title = "\(programmingLanguage.name!) - Notes"
         
         // set date format

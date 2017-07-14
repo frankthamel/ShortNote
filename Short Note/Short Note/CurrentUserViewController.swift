@@ -26,6 +26,10 @@ class CurrentUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check current user
+        validateUser(managedContext: managedContext)
+        
         usernameLabel.text = appDelegate.currentUser
         
         let currentUser = CurrentUser.find(username: appDelegate.currentUser, managedContext: managedContext)

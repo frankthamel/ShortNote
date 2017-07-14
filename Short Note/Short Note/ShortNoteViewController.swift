@@ -36,6 +36,10 @@ class ShortNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check current user
+        validateUser(managedContext: managedContext)
+        
         setData()
     }
 
@@ -77,6 +81,7 @@ class ShortNoteViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == imagePreviewSegue {
             let destinationController = segue.destination as! ImagePreviewViewController
+            destinationController.managedContext = managedContext
         
             let buttonIndex = sender as! Int
             switch buttonIndex {
