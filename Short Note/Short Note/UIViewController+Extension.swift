@@ -73,8 +73,9 @@ extension UIViewController {
     func validateUser(managedContext : NSManagedObjectContext) {
         // app delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let currentUser = CurrentUser.find(username: appDelegate.currentUser, managedContext: managedContext)
         
-        if appDelegate.currentUser.isEmpty {
+        if appDelegate.currentUser.isEmpty || ( currentUser == nil ) {
             let viewController : LogInViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController") as! LogInViewController
             viewController.managedContext = managedContext
             self.present(viewController, animated: false, completion: nil)
