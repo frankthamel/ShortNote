@@ -57,13 +57,14 @@ class SaveNoteViewController: UIViewController {
         super.viewDidLoad()
         loadLanguages()
         languagePickerView.reloadAllComponents()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         loadLanguages()
         languagePickerView.reloadAllComponents()
+        
         if let selectedProgrammingLanguage = selectedLanguage {
             let languageNameIndex = languages.flatMap{$0.name}.index(of: selectedProgrammingLanguage.name!)
             if let index = languageNameIndex {
@@ -77,6 +78,7 @@ class SaveNoteViewController: UIViewController {
             noteTitleText.text = note.title
             noteText.text = note.note
             
+            // set button image
             if let _ = note.imageOne {
                 noteImageViewOne.setImage(UIImage(named: "addImageIcon_active"), for: .normal)
             }
@@ -102,7 +104,8 @@ class SaveNoteViewController: UIViewController {
     
     // add image action
     @IBAction func addImage(_ sender: UIButton) {
-        // TODO : implement image picker
+        
+        // set currently tapped button
         switch sender.tag {
         case 1:
             setCurrentButton(noteImageViewOne, withId: 1)
@@ -137,7 +140,7 @@ class SaveNoteViewController: UIViewController {
                 var newNote = ShortNote(context: managedContext)
                 
                 if let note = noteForEdit {
-                    newNote = note
+                    newNote = note // reuse the note for edit
                 }
                 
                 newNote.title = noteTitleText.text!
@@ -150,6 +153,7 @@ class SaveNoteViewController: UIViewController {
                     newNote.language = languages[0]
                 }
                 
+                // bind picked images to node model
                 if let image1 = image1 {
                     newNote.imageOne = NSData(data : UIImageJPEGRepresentation(image1, 1.0)!)
                 }
@@ -193,6 +197,7 @@ class SaveNoteViewController: UIViewController {
     
     // clear fields
     private func clearFields() {
+        // change button image to inactive status
         noteImageViewOne.setImage(UIImage(named: "addImageIcon_inactive"), for: .normal)
         noteImageViewTwo.setImage(UIImage(named: "addImageIcon_inactive"), for: .normal)
         noteImageViewThree.setImage(UIImage(named: "addImageIcon_inactive"), for: .normal)
@@ -297,8 +302,7 @@ extension SaveNoteViewController : UIImagePickerControllerDelegate , UINavigatio
         
         dismiss(animated: true, completion: nil)
     }
-    
-    
+
 }
 
 

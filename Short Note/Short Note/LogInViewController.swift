@@ -29,6 +29,20 @@ class LogInViewController: UIViewController {
         SampleDataCreator.insertSampleData(managedContext: managedContext)
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // block walkthrough scrrens if viewd once
+        if UserDefaults.standard.bool(forKey: "viewedWalkthrough") {
+            return
+        }
+        
+        // load walkthrough screens
+        if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "WalkthroughPageViewController") as? WalkthroughPageViewController {
+            present(pageViewController, animated: true, completion: nil)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -54,6 +54,8 @@ class ShortNoteViewController: UIViewController {
             languageLabel.text = currentNote.language!.name!
             noteTextView.text = currentNote.note!
             
+            
+            // change button image to active and inactive status
             if let _ = currentNote.imageOne {
                 imageOneButton.setImage(UIImage(named: "addImageIcon_active"), for: .normal)
             }
